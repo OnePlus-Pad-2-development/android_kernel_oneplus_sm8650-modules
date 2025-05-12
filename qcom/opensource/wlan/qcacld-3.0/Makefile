@@ -21,10 +21,6 @@ KBUILD_OPTIONS += \
     CONFIG_IPA_OUT_OF_TREE=y \
     CONFIG_QCA_CLD_WLAN=m \
     CONFIG_CNSS_OUT_OF_TREE=y \
-    CONFIG_CNSS2=m \
-    CONFIG_ICNSS2=m \
-    CONFIG_CNSS2_QMI=y \
-    CONFIG_ICNSS2_QMI=y \
     CONFIG_CNSS_QMI_SVC=m \
     CONFIG_CNSS_PLAT_IPC_QMI_SVC=m \
     CONFIG_CNSS_GENL=m \
@@ -38,6 +34,8 @@ KBUILD_OPTIONS += \
 # WLAN module configuration based on platform
 ifeq ($(BOARD_WLAN_CHIP),kiwi_v2)
 KBUILD_OPTIONS += \
+    CONFIG_CNSS2=m \
+    CONFIG_CNSS2_QMI=y \
     WLAN_PROFILE=kiwi_v2 \
     DYNAMIC_SINGLE_CHIP=kiwi_v2 \
     MODNAME=qca_cld3_kiwi_v2 \
@@ -45,6 +43,8 @@ KBUILD_OPTIONS += \
     CONFIG_CNSS_KIWI_V2=y
 else ifeq ($(BOARD_WLAN_CHIP),qca6750)
 KBUILD_OPTIONS += \
+    CONFIG_ICNSS2=m \
+    CONFIG_ICNSS2_QMI=y \
     WLAN_PROFILE=qca6750 \
     DYNAMIC_SINGLE_CHIP=qca6750 \
     MODNAME=qca_cld3_qca6750 \
