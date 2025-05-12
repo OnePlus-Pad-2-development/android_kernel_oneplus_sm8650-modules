@@ -36,14 +36,14 @@ KBUILD_OPTIONS += \
     WLAN_CTRL_NAME=wlan
 
 # WLAN module configuration based on platform
-ifeq ($(TARGET_BOARD_PLATFORM),pineapple)
+ifeq ($(BOARD_WLAN_CHIP),kiwi_v2)
 KBUILD_OPTIONS += \
     WLAN_PROFILE=kiwi_v2 \
     DYNAMIC_SINGLE_CHIP=kiwi_v2 \
     MODNAME=qca_cld3_kiwi_v2 \
     DEVNAME=kiwi_v2 \
     CONFIG_CNSS_KIWI_V2=y
-else ifeq ($(TARGET_BOARD_PLATFORM),volcano)
+else ifeq ($(BOARD_WLAN_CHIP),qca6750)
 KBUILD_OPTIONS += \
     WLAN_PROFILE=qca6750 \
     DYNAMIC_SINGLE_CHIP=qca6750 \
