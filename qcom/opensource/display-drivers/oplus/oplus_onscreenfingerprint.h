@@ -165,44 +165,44 @@ extern int oplus_ofp_refresh_flag;
 /* debug log */
 #define OFP_ERR(fmt, arg...)	\
 	do {	\
-		if (oplus_ofp_log_level >= OPLUS_OFP_LOG_LEVEL_ERR)	\
+		if (true)	\
 			pr_err("[OFP][%u][ERR][%s:%d]"pr_fmt(fmt), oplus_ofp_display_id, __func__, __LINE__, ##arg);	\
 	} while (0)
 
 #define OFP_WARN(fmt, arg...)	\
 	do {	\
-		if (oplus_ofp_log_level >= OPLUS_OFP_LOG_LEVEL_WARN)	\
+		if (true)	\
 			pr_warn("[OFP][%u][WARN][%s:%d]"pr_fmt(fmt), oplus_ofp_display_id, __func__, __LINE__, ##arg);	\
 	} while (0)
 
 #define OFP_INFO(fmt, arg...)	\
 	do {	\
-		if (oplus_ofp_log_level >= OPLUS_OFP_LOG_LEVEL_INFO)	\
+		if (true)	\
 			pr_info("[OFP][%u][INFO][%s:%d]"pr_fmt(fmt), oplus_ofp_display_id, __func__, __LINE__, ##arg);	\
 	} while (0)
 
 #define OFP_DEBUG(fmt, arg...)	\
 	do {	\
-		if ((oplus_ofp_log_level >= OPLUS_OFP_LOG_LEVEL_DEBUG) && (oplus_dsi_log_type & OPLUS_DEBUG_LOG_OFP))	\
+		if (true)	\
 			pr_info("[OFP][%u][DEBUG][%s:%d]"pr_fmt(fmt), oplus_ofp_display_id, __func__, __LINE__, ##arg);	\
 	} while (0)
 
 /* debug trace */
 #define OPLUS_OFP_TRACE_BEGIN(name)	\
 	do {	\
-		if (oplus_display_trace_enable & OPLUS_DISPLAY_OFP_TRACE_ENABLE)	\
+		if (true)	\
 			SDE_ATRACE_BEGIN(name);	\
 	} while (0)
 
 #define OPLUS_OFP_TRACE_END(name)	\
 	do {	\
-		if (oplus_display_trace_enable & OPLUS_DISPLAY_OFP_TRACE_ENABLE)	\
+		if (true)	\
 			SDE_ATRACE_END(name);	\
 	} while (0)
 
 #define OPLUS_OFP_TRACE_INT(name, value)	\
 	do {	\
-		if (oplus_display_trace_enable & OPLUS_DISPLAY_OFP_TRACE_ENABLE)	\
+		if (true)	\
 			SDE_ATRACE_INT(name, value);	\
 	} while (0)
 
