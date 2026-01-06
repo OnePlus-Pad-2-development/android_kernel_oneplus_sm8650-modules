@@ -5178,6 +5178,7 @@ int oplus_ofp_notify_fp_press(void *buf)
 
 	return 0;
 }
+EXPORT_SYMBOL(oplus_ofp_notify_fp_press);
 
 /* notify fp press for sysfs */
 ssize_t oplus_ofp_notify_fp_press_attr(struct kobject *obj,

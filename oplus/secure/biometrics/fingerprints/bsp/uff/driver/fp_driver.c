@@ -85,6 +85,8 @@
 
 #endif
 
+#include "../../../../../../../qcom/opensource/display-drivers/oplus/oplus_onscreenfingerprint.h"
+
 #if defined(CONFIG_OPLUS_FINGERPRINT_GKI_ENABLE)
 #if IS_ENABLED(CONFIG_TOUCHPANEL_NOTIFY)
 #include "touchpanel_event_notify.h"
@@ -974,6 +976,7 @@ static int oplus_tp_notifier_call(struct notifier_block *nb, unsigned long val, 
     fp_tp_under_water_info_t tp_under_water_info = {0};
     char msg = 0;
     (void)nb;
+    int rc = 0;
 
     pr_info("recv tp event:%d\n", (int)val);
     switch (val) {
@@ -1000,12 +1003,16 @@ static int oplus_tp_notifier_call(struct notifier_block *nb, unsigned long val, 
                 msg = NETLINK_EVENT_TP_TOUCHDOWN;
                 lasttouchmode = tp_info->touch_state;
                 send_fingerprint_msg_by_type(E_FP_TP, tp_info->touch_state, tp_info, sizeof(struct fp_underscreen_info));
+                rc = oplus_ofp_notify_fp_press(&tp_info->touch_state);
+                pr_info("[%s] notify touch_state:%d oplus_ofp_notify_fp_press rc=%d\n", __func__, tp_info->touch_state, rc);
             } else {
                 fp_disable_intr3(fp_dev);
                 pr_info("%s touch up touchup\n", __func__);
                 msg = NETLINK_EVENT_TP_TOUCHUP;
                 send_fingerprint_msg_by_type(E_FP_TP, tp_info->touch_state, tp_info, sizeof(struct fp_underscreen_info));
                 lasttouchmode = tp_info->touch_state;
+                rc = oplus_ofp_notify_fp_press(&tp_info->touch_state);
+                pr_info("[%s] notify touch_state:%d oplus_ofp_notify_fp_press rc=%d\n", __func__, tp_info->touch_state, rc);
             }
             break;
 
